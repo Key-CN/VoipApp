@@ -1,4 +1,4 @@
-package io.keyss.base.activity;
+package io.keyss.base.view;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -25,7 +25,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         KeyActivityUtil.addActivity(mContext = this);
-        if (getContentViewId() != 0) {
+        if (0 != getContentViewId()) {
             binding = DataBindingUtil.setContentView(this, getContentViewId());
         }
         //mRxPermissions = new RxPermissions(this);
@@ -62,12 +62,12 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     /**
      * 界面初始化完成，只执行一次
      * 也可以用onWindowFocusChanged等待渲染完成,比这个方法先运行，但此方法多次执行
-     * 按需选择
+     * 按需实现
      * onStart - onResume - onWindowFocusChanged: true - Looper.myQueue().addIdleHandler()
      * - (进入后台)onWindowFocusChanged: false - onPause - onStop
      * 返回时：onStart - onResume - onWindowFocusChanged: true
      */
-    protected abstract void onActivityInitialized();
+    protected void onActivityInitialized(){}
 
     @Override
     protected void onDestroy() {
