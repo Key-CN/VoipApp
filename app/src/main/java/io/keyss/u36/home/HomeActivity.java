@@ -1,14 +1,10 @@
 package io.keyss.u36.home;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
@@ -27,6 +23,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
 
     @Override
     protected void initLayout(@Nullable Bundle savedInstanceState) {
+        setTitle(R.string.title_record);
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new RecordFragment());
         fragments.add(new SettingsFragment());
