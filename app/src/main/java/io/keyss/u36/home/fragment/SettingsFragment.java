@@ -19,8 +19,7 @@ public class SettingsFragment extends BaseFragment<FragmentSettingsBinding> {
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    protected void initLayout() {
         binding.setButtonTest(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

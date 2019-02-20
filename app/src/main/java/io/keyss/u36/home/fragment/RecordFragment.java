@@ -13,4 +13,9 @@ public class RecordFragment extends BaseFragment {
     protected int getContentViewId() {
         return R.layout.fragment_list;
     }
+
+    @Override
+    protected void initLayout() {
+
+    }
 }

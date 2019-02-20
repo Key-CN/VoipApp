@@ -16,6 +16,14 @@ public class ScrollViewPager extends ViewPager {
 
     private boolean isScroll;
 
+    /**
+     * 设置滑动，默认禁止滑动就禁止动画过场
+     * @param scroll
+     */
+    public void setScroll(boolean scroll) {
+        isScroll = scroll;
+    }
+
     public ScrollViewPager(@NonNull Context context) {
         super(context);
     }
@@ -49,7 +57,8 @@ public class ScrollViewPager extends ViewPager {
         return isScroll && super.onTouchEvent(ev);
     }
 
-    public void setScroll(boolean scroll) {
-        isScroll = scroll;
+    @Override
+    public void setCurrentItem(int item) {
+        super.setCurrentItem(item, isScroll);
     }
 }
