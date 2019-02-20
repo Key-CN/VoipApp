@@ -1,5 +1,6 @@
 package io.keyss.base.view;
 
+import android.content.pm.ActivityInfo;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -28,11 +29,9 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         if (0 != getContentViewId()) {
             binding = DataBindingUtil.setContentView(this, getContentViewId());
         }
-        //mRxPermissions = new RxPermissions(this);
-        //mProgressDialog = new RxDialogLoading(mContext);
 
         // 竖屏显示，不能转动，建议设在第二层
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // 初始化本地数据和布局
         initLayout(savedInstanceState);
