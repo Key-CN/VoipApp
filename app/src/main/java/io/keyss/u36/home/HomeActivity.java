@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
@@ -41,27 +42,31 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
             }
         });
 
-        binding.bnvHomeAct.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.id1:
-                        binding.vpHomeAct.setCurrentItem(0);
-                        break;
-                    case R.id.id2:
-                        binding.vpHomeAct.setCurrentItem(1);
-                        break;
-                }
-                return false;
+        binding.bnvHomeAct.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.id1:
+                    binding.vpHomeAct.setCurrentItem(0);
+                    break;
+                case R.id.id2:
+                    binding.vpHomeAct.setCurrentItem(1);
+                    break;
             }
+            return false;
         });
 
-        binding.vpHomeAct.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+        binding.vpHomeAct.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 binding.bnvHomeAct.getMenu().getItem(position).setChecked(true);
+                setActionBarTitle(position);
             }
         });
+    }
+
+    private void setActionBarTitle(int position) {
+        if (null != getSupportActionBar()) {
+            getSupportActionBar().setTitle(position == 0 ? R.string.title_record : R.string.title_settings);
+        }
     }
 }

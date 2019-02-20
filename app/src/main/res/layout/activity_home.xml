@@ -16,7 +16,7 @@
             android:background="@android:color/white"
             app:menu="@menu/bottom_menu" />
 
-        <android.support.v4.view.ViewPager
+        <io.keyss.base.widget.ScrollViewPager
             android:id="@+id/vp_home_act"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

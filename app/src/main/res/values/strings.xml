@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">U36</string>
+    <string name="title_record">记录</string>
+    <string name="title_settings">设置</string>
 </resources>
