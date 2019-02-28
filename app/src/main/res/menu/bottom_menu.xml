@@ -3,9 +3,9 @@
     <item
         android:id="@+id/id1"
         android:checked="true"
-        android:title="标题1" />
+        android:title="列表" />
     <item
         android:id="@+id/id2"
-        android:title="标题2" />
+        android:title="设置" />
 
 </menu>

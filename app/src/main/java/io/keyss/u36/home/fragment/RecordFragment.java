@@ -9,13 +9,18 @@ import io.keyss.u36.R;
  * Description:
  */
 public class RecordFragment extends BaseFragment {
+
     @Override
     protected int getContentViewId() {
-        return R.layout.fragment_list;
+        return R.layout.fragment_record;
     }
 
     @Override
     protected void initLayout() {
-
+        /*Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_CALL);
+        //intent.setData(Uri.parse("tel:*7218698569593"));
+        intent.setData(Uri.parse("tel:*720"));
+        startActivity(intent);*/
     }
 }

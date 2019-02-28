@@ -18,7 +18,7 @@ public class ScrollViewPager extends ViewPager {
 
     /**
      * 设置滑动，默认禁止滑动就禁止动画过场
-     * @param scroll
+     * @param scroll false禁止滑动及动画
      */
     public void setScroll(boolean scroll) {
         isScroll = scroll;
