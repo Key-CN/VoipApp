@@ -17,10 +17,16 @@ public class RecordFragment extends BaseFragment {
 
     @Override
     protected void initLayout() {
-        /*Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_CALL);
-        //intent.setData(Uri.parse("tel:*7218698569593"));
-        intent.setData(Uri.parse("tel:*720"));
-        startActivity(intent);*/
+        /*Cursor query = mContext.getContentResolver().query(CallLog.Calls.CONTENT_URI, //系统方式获取通讯录存储地址
+                new String[]{
+                        CallLog.Calls.CACHED_NAME,  //姓名
+                        CallLog.Calls.NUMBER,    //号码
+                        CallLog.Calls.TYPE,  //呼入/呼出(2)/未接
+                        CallLog.Calls.DATE,  //拨打时间
+                        CallLog.Calls.DURATION,   //通话时长
+                }, null, null, CallLog.Calls.DEFAULT_SORT_ORDER);
+        if (null != query) {
+            Toast.makeText(mContext, "获取到通话记录" + query.getCount() + "条", Toast.LENGTH_SHORT).show();
+        }*/
     }
 }

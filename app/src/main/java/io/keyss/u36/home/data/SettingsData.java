@@ -8,5 +8,6 @@ import android.databinding.ObservableBoolean;
  * Description:
  */
 public class SettingsData {
+    // static 无法刷新
     public final ObservableBoolean isLogin = new ObservableBoolean();
 }

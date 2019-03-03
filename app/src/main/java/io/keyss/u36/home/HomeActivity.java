@@ -16,6 +16,7 @@ import io.keyss.u36.home.fragment.SettingsFragment;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
 
+
     @Override
     protected int getContentViewId() {
         return R.layout.activity_home;
