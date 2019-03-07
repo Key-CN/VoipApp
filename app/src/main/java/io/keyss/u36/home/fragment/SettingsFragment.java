@@ -12,6 +12,7 @@ import net.gotev.sipservice.SipServiceCommand;
 
 import io.keyss.base.utils.KeyCommonUtil;
 import io.keyss.base.view.BaseFragment;
+import io.keyss.base.widget.KeySureCancelDialog;
 import io.keyss.u36.R;
 import io.keyss.u36.databinding.FragmentSettingsBinding;
 import io.keyss.u36.home.data.SettingsData;
@@ -89,7 +90,9 @@ public class SettingsFragment extends BaseFragment<FragmentSettingsBinding> {
         binding.bGd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SipServiceCommand.hangUpActiveCalls(mContext, sipAccount.getIdUri());
+                //SipServiceCommand.hangUpActiveCalls(mContext, sipAccount.getIdUri());
+                KeySureCancelDialog dialog = new KeySureCancelDialog(mContext);
+                dialog.show();
             }
         });
 
