@@ -66,7 +66,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
         });
 
         // 方便调试
-        binding.vpHomeAct.setCurrentItem(1);
+        //binding.vpHomeAct.setCurrentItem(1);
 
         new RxPermissions(mContext)
                 .request(Manifest.permission.READ_PHONE_STATE,
