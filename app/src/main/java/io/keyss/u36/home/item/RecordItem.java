@@ -11,18 +11,25 @@ import io.keyss.u36.R;
  */
 public class RecordItem implements IMultiTypeItem {
 
-    private String phoneNumber;
+    /*
+    CallLog.Calls.CACHED_NAME,  //姓名
+    CallLog.Calls.NUMBER,    //号码
+    CallLog.Calls.TYPE,  //呼入/呼出(2)/未接
+    CallLog.Calls.DATE,  //拨打时间
+    CallLog.Calls.DURATION,   //通话时长
+     */
+    public String name;
+    public String number;
+    public String type;
+    public String date;
+    public String duration;
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public RecordItem(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public RecordItem(String name, String number, String type, String date, String duration) {
+        this.name = name;
+        this.number = number;
+        this.type = type;
+        this.date = date;
+        this.duration = duration;
     }
 
     @Override

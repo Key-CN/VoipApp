@@ -18,6 +18,6 @@
             android:id="@+id/tv_name_record_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{"名字: " + recordItem.phoneNumber}' />
+            android:text='@{(recordItem.name!=null?(recordItem.name+ "-"):"")+ recordItem.number + " 持续:" + recordItem.duration+"秒"}' />
     </RelativeLayout>
 </layout>

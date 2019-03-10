@@ -42,9 +42,7 @@ public class RecordFragment extends BaseFragment<FragmentRecordBinding> {
             int count = query.getCount();
             query.moveToFirst();
             for (int i = 0; i < count && !query.isAfterLast(); query.moveToNext(), i++) {
-                String callName = query.getString(0);  //名称
-                String callNumber = query.getString(1);  //号码
-                numbers.add(new RecordItem(callName + "[" + callNumber + "]"));
+                numbers.add(new RecordItem(query.getString(0), query.getString(1), query.getString(2), query.getString(3), query.getString(4)));
             }
             query.close();
         }
