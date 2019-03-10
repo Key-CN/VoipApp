@@ -1,21 +1,19 @@
 package io.keyss.u36.home.fragment;
 
 import android.database.Cursor;
-import android.databinding.DataBindingUtil;
 import android.provider.CallLog;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import io.keyss.base.adapter.IMultiTypeItem;
+import io.keyss.base.adapter.MultiTypeAdapter;
 import io.keyss.base.view.BaseFragment;
 import io.keyss.u36.R;
 import io.keyss.u36.databinding.FragmentRecordBinding;
-import io.keyss.u36.databinding.ItemRecordFmtBinding;
+import io.keyss.u36.home.item.RecordItem;
 
 /**
  * @author Key
@@ -24,8 +22,6 @@ import io.keyss.u36.databinding.ItemRecordFmtBinding;
  */
 public class RecordFragment extends BaseFragment<FragmentRecordBinding> {
 
-    private ArrayList<String> numbers;
-
     @Override
     protected int getContentViewId() {
         return R.layout.fragment_record;
@@ -33,7 +29,7 @@ public class RecordFragment extends BaseFragment<FragmentRecordBinding> {
 
     @Override
     protected void initLayout() {
-        numbers = new ArrayList<>();
+        List<IMultiTypeItem> numbers = new ArrayList<>();
         Cursor query = mContext.getContentResolver().query(CallLog.Calls.CONTENT_URI, //系统方式获取通讯录存储地址
                 new String[]{
                         CallLog.Calls.CACHED_NAME,  //姓名
@@ -48,42 +44,15 @@ public class RecordFragment extends BaseFragment<FragmentRecordBinding> {
             for (int i = 0; i < count && !query.isAfterLast(); query.moveToNext(), i++) {
                 String callName = query.getString(0);  //名称
                 String callNumber = query.getString(1);  //号码
-                numbers.add("[" + callName + "]" + callNumber);
+                numbers.add(new RecordItem(callName + "[" + callNumber + "]"));
             }
+            query.close();
         }
 
-        binding.rvRecordFmt.setAdapter(new ItemAdapter());
         binding.rvRecordFmt.setLayoutManager(new LinearLayoutManager(mContext));
         binding.rvRecordFmt.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
-    }
-
-    class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
-
-        @NonNull
-        @Override
-        public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            ItemRecordFmtBinding bind = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.item_record_fmt, viewGroup, false);
-            return new ItemViewHolder(bind);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int i) {
-            itemViewHolder.bind.tvNameRecordItem.setText(numbers.get(i));
-        }
-
-        @Override
-        public int getItemCount() {
-            return numbers.size();
-        }
-
-        class ItemViewHolder extends RecyclerView.ViewHolder {
-
-            private final ItemRecordFmtBinding bind;
-
-            public ItemViewHolder(@NonNull ItemRecordFmtBinding bind) {
-                super(bind.getRoot());
-                this.bind = bind;
-            }
-        }
+        MultiTypeAdapter adapter = new MultiTypeAdapter();
+        adapter.addItems(numbers);
+        binding.rvRecordFmt.setAdapter(adapter);
     }
 }
